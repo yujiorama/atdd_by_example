@@ -1,4 +1,3 @@
-
 ## steps
 
 ```
@@ -10,4 +9,5 @@ bundle exec cucumber-sinatra init --app ParkingLotCalculator lib/parking_lot_cal
 
 ## reference
 
-    * https://github.com/bernd/cucumber-sinatra:
+  * https://github.com/bernd/cucumber-sinatra
+
