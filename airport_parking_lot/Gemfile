@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem 'rspec'
 gem 'cucumber'
 gem 'sinatra'
 gem 'cucumber-sinatra', :git => 'git://github.com/bernd/cucumber-sinatra.git', :branch => 'master'
+gem 'capybara'
