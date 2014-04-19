@@ -1,7 +1,7 @@
 require 'sinatra/base'
 
 class ParkingLotCalculator < Sinatra::Base
-  get '/' do
+  get '/parkcalc' do
     'Hello ParkingLotCalculator!'
   end
 
