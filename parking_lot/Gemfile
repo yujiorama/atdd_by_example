@@ -5,5 +5,6 @@ gem 'rake'
 gem 'capybara'
 gem 'cucumber'
 
+gem 'selenium-connect', :git => 'https://github.com/chemistrykit/selenium-connect.git', :branch => 'master'
 gem 'selenium-webdriver'
 gem 'rspec'

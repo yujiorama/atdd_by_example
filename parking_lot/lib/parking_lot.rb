@@ -4,6 +4,6 @@ class ParkCalcPage
 
   def initialize(page_handle)
     @page = page_handle
-    @page.get '/parkcalc'
+    @page.open '/parkcalc'
   end
 end
