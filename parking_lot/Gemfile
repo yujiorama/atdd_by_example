@@ -8,3 +8,5 @@ gem 'cucumber'
 gem 'selenium-connect', :git => 'https://github.com/chemistrykit/selenium-connect.git', :branch => 'master'
 gem 'selenium-webdriver'
 gem 'rspec'
+
+gem 'rake-hooks', :git => 'https://github.com/guillermo/rake-hooks.git', :branch => 'master'

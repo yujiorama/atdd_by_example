@@ -3,16 +3,21 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 require 'selenium/rake/server_task'
+require 'rake/hooks'
 
-server_path = File.expand_path("bin/selenium-server-standalone-2.41.0.jar", File.dirname(__FILE__))
 
 Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = "features --format pretty"
 end
 
-
 Selenium::Rake::ServerTask.new do |t|
-  t.jar = server_path
+  t.jar = File.expand_path("bin/selenium-server-standalone-2.41.0.jar", File.dirname(__FILE__))
   t.port = 4444
   t.background = true
+end
+
+task :features => ["selenium:server:restart"]
+
+after :features do
+  Rake::Task["selenium:server:stop"].execute
 end
