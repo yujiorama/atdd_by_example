@@ -3,6 +3,8 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+ENV['PATH'] = ENV['PATH'] + ":" +  File.expand_path("./bin", File.dirname(__FILE__))
+
 Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = "features --format pretty"
 end
