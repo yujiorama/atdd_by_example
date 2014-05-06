@@ -18,5 +18,5 @@ $parkcalc = ParkCalcPage.new(driver)
 
 # after all
 at_exit do
-  driver.quit
+  driver.close_current_browser_session
 end
