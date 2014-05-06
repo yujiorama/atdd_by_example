@@ -5,3 +5,5 @@ gem 'rake'
 gem 'capybara'
 gem 'cucumber'
 
+gem 'selenium-client'
+gem 'rspec'
