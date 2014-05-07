@@ -1,32 +1,39 @@
 
 class ParkCalcPage
-  attr :page
+  @@durationMap = {
+    '30 minutes' => ['05/04/2010', '12:00', 'AM', '05/04/2010', '12:30', 'AM']
+  }
 
+  @@lotIdentifier = 'ParkingLot'
+  @@startingPrefix = 'Starting'
+  @@leavingPrefix = 'Leaving'
+  @@dateTemplate = "%sDate"
+  @@timeTemplate = "%sTime"
+  @@amPMRadioButtonTemplate = "//input[@name='%sTimeAMPM' and @value='%s']"
+
+  attr :page
 
   def initialize(page_handle)
     @page = page_handle
     @page.open '/parkcalc'
-
-    @@durationMap = {
-      '30 minutes' => ['05/04/2010', '12:00', 'AM', '05/04/2010', '12:30', 'AM']
-    }
   end
   
   def select(parking_lot)
-    @page.select 'ParkingLot', parking_lot
+    @page.select @@lotIdentifier, parking_lot
   end
   
   def enter_parking_duration(duration)
     startingDate, startingTime, startingTimeAMPM, leavingDate, leavingTime, leavingTimeAMPM = @@durationMap[duration]
-    @page.type 'StartingDate', startingDate
-    @page.type 'StartingTime', startingTime
-    @page.click "//input[@name='StartingTimeAMPM' and @value='%s']" % startingTimeAMPM
-
-    @page.type 'LeavingDate', leavingDate
-    @page.type 'LeavingTime', leavingTime
-    @page.click "//input[@name='LeavingTimeAMPM' and @value='%s']" % leavingTimeAMPM
+    fill_in_date_and_time_for @@startingPrefix, startingDate, startingTime, startingTimeAMPM
+    fill_in_date_and_time_for @@leavingPrefix, leavingDate, leavingTime, leavingTimeAMPM
   end
-  
+
+  def fill_in_date_and_time_for(formPrefix, date, time, ampm)
+    @page.type @@dateTemplate % formPrefix, date
+    @page.type @@timeTemplate % formPrefix, time
+    @page.click @@amPMRadioButtonTemplate % [formPrefix, ampm ]
+  end
+
   def parking_costs
     return nil
   end
