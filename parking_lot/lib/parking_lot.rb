@@ -35,6 +35,8 @@ class ParkCalcPage
   end
 
   def parking_costs
-    return nil
+    @page.click 'submit'
+    @page.wait_for_page_to_load 10000
+    cost_element = @page.get_text "//div[@id='EstimatedParkingCosts']"
   end
 end
