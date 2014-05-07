@@ -6,6 +6,7 @@ When(/^I park my car in the Valet Parking Lot for (.*)$/) do |duration|
   pending
 end
 
-Then(/^I will have to pay \$ (\d+)\.(\d+)$/) do |arg1, arg2|
+Then(/^I will have to pay (.*)$/) do |price|
+  $parkcalc.parking_costs.should == price
   pending # express the regexp above with the code you wish you had
 end

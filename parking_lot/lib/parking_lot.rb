@@ -12,4 +12,8 @@ class ParkCalcPage
   
   def enter_parking_duration(duration)
   end
+  
+  def parking_costs
+    return nil
+  end
 end
