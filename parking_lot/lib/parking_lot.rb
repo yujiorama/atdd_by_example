@@ -11,6 +11,9 @@ class ParkCalcPage
   @@timeTemplate = "%sTime"
   @@amPMRadioButtonTemplate = "//input[@name='%sTimeAMPM' and @value='%s']"
 
+  @@calculateButtunIdentifier = 'submit'
+  @@costElementLocation = "//div[@id='EstimatedParkingCosts']"
+
   attr :page
 
   def initialize(page_handle)
@@ -35,8 +38,16 @@ class ParkCalcPage
   end
 
   def parking_costs
-    @page.click 'submit'
+    calculate_parking_costs
+    get_parking_costs_from_page
+  end
+  
+  def calculate_parking_costs
+    @page.click @@calculateButtunIdentifier
     @page.wait_for_page_to_load 10000
-    cost_element = @page.get_text "//div[@id='EstimatedParkingCosts']"
+  end
+  
+  def get_parking_costs_from_page
+    @page.get_text @@costElementLocation
   end
 end
